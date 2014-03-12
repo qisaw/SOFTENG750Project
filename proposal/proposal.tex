@@ -1,0 +1,99 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{url}
+
+\begin{document}
+
+\title{SE750 Project Proposal}
+\author{Mikhail D'Souza, Wasiq Kashkari, Sara Metz}
+\date{12/03/2014}
+\maketitle
+
+\section{Research Question}
+Is it feasible to predict the amount of code that can be parallelized?
+
+\section{Motivations}
+In terms of frequency, processors are beginning to peek at their physical
+limits. As a result, the development and widespread public use of devices with
+multiple cores is increasing rapidly. Whilst these multi-core processors are
+capable of running multiple tasks at asynchronously, the majority of code in the
+industry is not designed to efficiently capitalize on this capability. Thus,
+these physically superior devices are inefficiently used since a large chunk of
+processing power is wasted.
+
+Naturally, developers are beginning to adapt to the changing hardware landscape.
+Sequential code is being adjusted for multi-threaded environments. However this
+is complicated and time consuming , especially if a developer lacks prior and
+detailed knowledge of the inner workings of multiprocessing. As a result,
+developing for multi-threaded environments can become unnecessarily difficult.
+Developers are then faced with an unclear view of the cost vs benefits of
+parallelising a block of code.
+
+Our research question aims to give developers a tool to quickly and intuitively
+visualise the benefits ofparallelising a block of code. As a result, developers
+will tend to become more productive in the long run as they will be more
+reliably able to focus on parallelising areas of code with the most to benefit
+from it.
+
+\section{Requirements}
+\begin{description}
+\item The program must use an efficient, algorithm to analyse code blocks
+and determine whether or not that block of code is parallelizable.
+\item The program must take dependencies into account to some level
+\item Give the user a quick and easy way to obtain a useful visualisation
+of the possible percentage speedup of a block of code.
+\item Meaningfully break down the code into fractions that can and cannot
+be parallelised
+\item Given a java package, produce some form of speedup vs number of
+processors graph
+\end{description}
+
+\section{Related Articles}
+Bla
+
+\section{Design}
+We will start design on the project in an agile manner. The plan is to churn out
+features in an incremental fashion while testing them before moving on to the
+next. The grand plan is to create a program that will be inputed a directory
+full of Java code. The output will be an analysis of how much of the code in
+there can be parallelised and what will be the resulting speedup for each piece
+of code.
+
+The program will scan each line of code and determine how many atomic lines of
+code there are. The program will calculate the total atomic lines of code by
+adding  up all the atomic lines of code that it can find and the lines of code
+within non-atomic functions. This metric will give a good superficial count of
+how many atomic operations occur in a given piece of code. The assumptions is
+that atomic lines of code cannot be parallelised within.
+
+The second assumption is that all atomic lines of code that unit time to
+execute. The point of this exercise is to get a very rough idea of the best case
+scenario of how much time a certain piece of code will take to execute.
+
+This information will be used when trying to calculate the fraction of code
+within a method that can be parallelised. For the purposes of simplicity, we
+will start with the assumption that any code within the first level of a for,
+while or do loop can be parallelised and the rest cannot be. If time permits,
+this metric can be made more complex. The fraction will be calculated for each
+method. This fraction will be used to compute a graph of Speed Up vs. Processors
+and will be outputted to the user.
+
+The point of this exercise is not to find an accurate description of how much
+can be parallelised but rather to find the methods within a package that could
+benefit the most from parallelisation. Methods with the most promise of speed up
+from parallelisation can be worked upon first while method with very little
+speedup can be neglected.
+
+\section{Evaluation}
+Evaluation of the success of the solution will be achieved using several
+methods. The first method will use simple parallelization problems that the
+fraction of parallelizable code can easily be calculated for. These fractions
+will then be used to compare with the solution’s output. Another method to
+evaluate the correctness of the solution will be to run the same simple problems
+on a multicore machine both serially and after being parallelized and to compare
+the perceived speedup values with the calculated speedup values produced by the
+solution. The final method that will be used to evaluate the solution will be to
+do a user study of the usefulness of the produced visualizations in comparison
+to current parallelizable code visualization tools.
+
+\end{document}

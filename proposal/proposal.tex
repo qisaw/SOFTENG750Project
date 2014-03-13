@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper]{article}
 
 \usepackage{url}
 
@@ -26,32 +26,27 @@ piece of code?
 
 \section{Motivation}
 In terms of frequency, processors are beginning to peek at their physical
-limits. As a result, the development and widespread public use of devices with
+limits. The development and widespread public use of devices with
 multiple cores is increasing rapidly. Whilst these multi-core processors are
 capable of running multiple tasks at asynchronously, the majority of code in the
 industry is not designed to efficiently capitalize on this capability. Thus,
 these physically superior devices are inefficiently used since a large chunk of
 processing power is wasted.
 
-Naturally, developers are beginning to adapt to the changing hardware landscape.
+Developers are beginning to adapt to the changing hardware landscape.
 Sequential code is being adjusted for multi-threaded environments. However this
-is complicated and time consuming , especially if a developer lacks prior and
+is complicated and time consuming, especially if a developer lacks prior and
 detailed knowledge of the inner workings of multiprocessing. As a result,
-developing for multi-threaded environments can become unnecessarily difficult.
-Developers are then faced with an unclear view of the cost vs benefits of
-parallelising a block of code.
+developing for multi-threaded environments can become difficult. Developers are
+then faced with an unclear view of the cost vs benefits of parallelising a block
+of code.
 
 Our research question aims to give developers a tool to quickly and intuitively
-visualise the benefits ofparallelising a block of code. As a result, developers
-will tend to become more productive in the long run as they will be more
-reliably able to focus on parallelising areas of code with the most to benefit
-from it.
-
-The point of this exercise is not to find an accurate description of how much
-can be parallelised but rather to find the methods within a package that could
-benefit the most from parallelisation. Methods with the most promise of speed up
-from parallelisation can be worked upon first while method with very little
-speedup can be neglected.
+visualise the benefits of parallelising a block of code. The point of this
+exercise is not to find an accurate description of how much can be parallelised
+but rather to find the methods within a package that could benefit the most from
+parallelisation. Methods with the most promise of speed up from parallelisation
+can be worked upon first while method with very little speedup can be neglected.
 
 \section{Requirements}
 \begin{description}
@@ -85,15 +80,20 @@ execute. The point of this exercise is to get a very rough idea of the best case
 scenario of how much time a certain piece of code will take to execute.
 
 \section{Evaluation}
-Evaluation of the success of the solution will be achieved using several
-methods. The first method will use simple parallelization problems that the
-fraction of parallelizable code can easily be calculated for. These fractions
-will then be used to compare with the solution’s output. Another method to
-evaluate the correctness of the solution will be to run the same simple problems
-on a multicore machine both serially and after being parallelized and to compare
-the perceived speedup values with the calculated speedup values produced by the
-solution. The final method that will be used to evaluate the solution will be to
-do a user study of the usefulness of the produced visualizations in comparison
-to current parallelizable code visualization tools.
+\begin{description}
+\item The first method will use simple parallelization
+problems that the fraction of parallelizable code can easily be calculated for. These fractions
+will then be used to compare with the solution’s output. 
+\item Second method to evaluate the correctness of the solution will be to run
+the same simple problems on a multicore machine both serially and after being
+parallelized and to compare the perceived speedup values with the calculated
+speedup values produced by the solution.
+\item Third method is to get code from preveious assignments and run it through
+the program. The output of the program will be judged. The quality and usefulness of
+the graphs produced will be evaluated.
+\item The final method that will be used to evaluate the solution will be to do
+a user study of the usefulness of the produced visualizations in comparison to current
+parallelizable code visualization tools.
+\end{description}
 
 \end{document}

@@ -11,12 +11,11 @@
 \maketitle
 
 \abstract{Now that multi-core mobile phones are becoming the norm, there is
-more emphasis on multi-core aware programming. This article looks at answering
-the question, ``how much of the code can be parallelised?'' and ``how do we
-visualize the benefits of parallelization?'' Finding and using good metrics to
-gauge how much of the code can be parallelised is very hard.
-This project analyse parallelisability at a superficial level and pave the way
-for more advanced heuristics to come}
+more emphasis on multi-core aware programming. This article proposes creating a tool that allows 
+a developer to see how much of his/her code can be parallelised. This presents many challenges such as being able to 
+visualize the benefits of parallelisation meaningfully and finding and using good metrics to
+gauge how much of the code can be parallelised. This project will attempt to analyse parallelisability at a superficial level and pave the way
+for more advanced heuristics to come.}
 
 \section{Research Question}
 \begin{description}
@@ -58,8 +57,6 @@ and determine whether or not that block of code is parallelizable.
 of the possible percentage speedup of a block of code.
 \item Meaningfully break down the code into fractions that can and cannot
 be parallelised
-\item Given a java package, produce some form of speedup vs number of
-processors graph
 \end{description}
 
 \section{Related Articles}
@@ -73,29 +70,12 @@ long run.
 
 Furthermore, a programmer has knowledge about their program the algorithm cannot obtain, such as
 data compisition and likely flow paths. Armed with such information, programmers the ability to make better judgements on the usefulness and most appropriate method of parallelisation. This statement has been supported by the authors of such automatic
-paralellization tools \cite{5470884} who state that automatic paralellisation does not do a good job in many situations. Hence, we propose an approach that statically analyses source code, giving the programmer ideas of where parallelisation could be beinifical. But ultimately, leaving parallelization to the programmer who can draw on his or her personal knowledge of the program.
-
-The ability to visualise source code in a pragmatic style has been an
-extensively researched problem. Large, complex systems have many sophisticated
-transactions with a variety of data flow paths. It is difficult to get a clear
-understanding of the system by simply analyzing code. Data visualisation tools
-aim to give the developer a clear, consise overview of the system while
-identifying important “hot spots”. Our project intends to complete this
-\cite{488299}
-
-In this publication \cite{pitfalls2011}, the authors talk about the many pitfalls of
-parallelisation. While granularity can talk about overhead of each thread, it is
-not enough to consider just that. Threads with optimal granularity but a large
-amounts of dependencies will also end up being slower than serial code. The
-author talk about non-negligible overheads with threads that a dependent. It is
-not sufficient to look at the lines of codes by itself suggesting that the
-problem proposed by this article is very much a non-trivial one but rather, a
-very complex one very many variables
+paralellization tools who state that automatic paralellisation does not do a good job in many situations \cite{5470884}. Hence, we propose an approach that statically analyses source code, giving the programmer ideas of where parallelisation could be beinifical. But ultimately, leaving parallelization to the programmer who can draw on his or her personal knowledge of the program.
 
 \section{Design}
 The creation of this tool will be based around an agile development process where features will be developed and tested incremental fashion. This will simplify the creation of a complicated tool into a set of relatively simple features. With such a complex tool and a relatively short timespan, an agile process allows us to change the scope of the project very quickly and still have a fully funcitonal set of capabilities.
 
-The long term scope of the project is to create a tool that outputs a meaningful analysis the amount of parallelisable code and the resulting speedup given a java derectory as input. This will be achieved at first by obtaining a superficial count of how many atomic operations occur in a block of code. The assumptions is that atomic lines of code cannot be parallelised while most others can. This allows the developer to get a rough estimate of the speed up they can expect by parallelizing their code. As the project progresses we intend to include other analysies such as dependence analysis to imporve the accuracy of this estimate.
+The long term scope of the project is to create a tool that outputs a meaningful analysis the amount of parallelisable code and the resulting speedup given a java derectory as input. This will be achieved at first by obtaining a superficial count of how many atomic operations occur in a block of code. The assumptions is that atomic lines of code cannot be parallelised while most others can. This allows the developer to get a rough estimate of the speed up they can expect by parallelizing their code. As the project progresses we intend to include other methods such as dependence analysis to improve the accuracy of this estimate.
 
 \section{Evaluation}
 \begin{description}

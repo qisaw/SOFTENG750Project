@@ -11,11 +11,13 @@
 \maketitle
 
 \abstract{Now that multi-core mobile phones are becoming the norm, there is
-more emphasis on multi-core aware programming. This article proposes creating a tool that allows 
-a developer to see how much of his/her code can be parallelised. This presents many challenges such as being able to 
-visualize the benefits of parallelisation meaningfully and finding and using good metrics to
-gauge how much of the code can be parallelised. This project will attempt to analyse parallelisability at a superficial level and pave the way
-for more advanced heuristics to come.}
+more emphasis on multi-core aware programming. This article proposes creating a
+tool that allows a developer to see how much of his/her code can be
+parallelised. This presents many challenges such as being able to visualize the
+benefits of parallelisation meaningfully and finding and using good metrics to
+gauge how much of the code can be parallelised. This project will attempt to
+analyse parallelisability at a superficial level and pave the way for more
+advanced heuristics to come.}
 
 \section{Research Question}
 \begin{description}
@@ -28,24 +30,22 @@ piece of code?
 In terms of frequency, processors are beginning to peek at their physical
 limits. The development and widespread public use of devices with
 multiple cores is increasing rapidly. Whilst these multi-core processors are
-capable of running multiple tasks at asynchronously, the majority of code in the
-industry is not designed to efficiently capitalize on this capability. Thus,
-these physically superior devices are inefficiently used since a large chunk of
-processing power is wasted.
+capable of running multiple tasks asynchronously, the majority of code in the
+industry is not designed to efficiently capitalize on this capability
+(citation?). These physically superior devices are inefficiently used.
 
 Developers are beginning to adapt to the changing hardware landscape.
-Sequential code is being adjusted for multi-threaded environments. However this
-is complicated and time consuming, especially if a developer lacks prior and
-detailed knowledge of the inner workings of multiprocessing. As a result,
-developing for multi-threaded environments can become difficult. Developers are
-then faced with an unclear view of the cost vs benefits of parallelising a block
-of code.
+Sequential code is being adjusted for multi-threaded environments. This is
+complicated and time consuming, especially if a developer lacks prior knowledge
+of the workings of multiprocessing. As a result, developing for multi-threaded
+environments can become difficult. Developers are then faced with an unclear
+view of the cost vs benefits of parallelising a block of code.
 
 Our research question aims to give developers a tool to quickly and intuitively
 visualise the benefits of parallelising a block of code. The point of this
 exercise is not to find an accurate description of how much can be parallelised
-but rather to find the methods within a package that could benefit the most from
-parallelisation. Methods with the most promise of speed up from parallelisation
+but rather to find the methods within a package that could benefit the most
+from parallelisation. Methods with the most promise of speed up from parallelisation
 can be worked upon first while method with very little speedup can be neglected.
 
 \section{Requirements}
@@ -62,35 +62,54 @@ be parallelised
 \section{Related Articles}
 There are some tools in industry that try and do some automatic parallelisation
 of some loops based on dependency analysis. This has been done using both static
-analysis \cite{helixProject} and runtime dynamic analysis \cite{peterson1993} \cite{1207020} \cite{Rus05hybriddependence}. However, these
-tools simply try to parallelise all the code that they can, without taking
-software metrics such as understandability and extensibility into account. This
-can result in difficult to maintain code, which costs the developer more in the
-long run.
+analysis \cite{helixProject} and runtime dynamic analysis \cite{peterson1993}
+\cite{1207020} \cite{Rus05hybriddependence}. However, these tools simply try to
+parallelise all the code that they can, without taking software metrics such as
+understandability and extensibility into account. This can result in difficult
+to maintain code, which costs the developer more in the long run.
 
-Furthermore, a programmer has knowledge about their program the algorithm cannot obtain, such as
-data compisition and likely flow paths. Armed with such knowledge, programmers have the ability to make better judgements on the usefulness and most appropriate method of parallelisation. This statement is echo'd by other research that states that automatic paralellisation does not do a good job in many situations \cite{5470884}. Hence, we propose an approach that statically analyses source code, giving the programmer ideas of where parallelisation could be beinifical. But ultimately, leaving parallelization to the programmer who can draw on his or her personal knowledge of the program.
+Furthermore, a programmer has knowledge about their program the algorithm cannot
+obtain, such as data composition and likely flow paths. Armed with such
+knowledge, programmers have the ability to make better judgement on the
+usefulness and most appropriate method of parallelisation. This statement is
+echoed by other research that states that automatic paralellisation does not do
+a good job in many situations \cite{5470884}. Hence, we propose an approach that
+statically analyses source code, giving the programmer ideas of where
+parallelisation could be beinifical. But ultimately, leaving parallelization to
+the programmer who can draw on their personal knowledge of the program.
 
 \section{Design}
-The creation of this tool will be based around an agile development process where features will be developed and tested incremental fashion. This will simplify the creation of a complicated tool into a set of relatively simple features. With such a complex tool and a relatively short timespan, an agile process allows us to change the scope of the project very quickly and still have a fully funcitonal set of capabilities.
+The creation of this tool will be based around an agile development process
+where features will be developed and tested in an incremental fashion. This
+will simplify the creation of a complicated tool into a set of relatively simple
+features. With such a complex tool and a relatively short timespan, an agile
+process allows us to change the scope of the project very quickly and still have
+a fully funcitonal set of capabilities.
 
-The long term scope of the project is to create a tool that outputs a meaningful analysis the amount of parallelisable code and the resulting speedup given a java derectory as input. This will be achieved at first by obtaining a superficial count of how many atomic operations occur in a block of code. The assumptions is that atomic lines of code cannot be parallelised while most others can. This allows the developer to get a rough estimate of the speed up they can expect by parallelizing their code. As the project progresses we intend to include other methods such as dependence analysis to improve the accuracy of this estimate.
+The long term scope of the project is to create a tool that outputs a meaningful
+analysis the amount of parallelisable code and the resulting speedup given a
+java derectory as input. This will be achieved at first by obtaining a
+superficial count of how many atomic operations occur in a block of code. The
+assumptions is that atomic lines of code cannot be parallelised internally while
+most others can. This allows the developer to get a rough estimate of the speed up
+they can expect by parallelizing their code. As the project progresses we intend
+to include other methods such as dependence analysis to improve the accuracy of
+this estimate.
 
 \section{Evaluation}
 \begin{description}
-\item The first method will use simple parallelization
-problems that the fraction of parallelizable code can easily be calculated for.
-These fractions will then be used to compare with the solution’s output. 
-\item Second method to evaluate the correctness of the solution will be to run
-the same simple problems on a multicore machine both serially and after being
-parallelized and to compare the perceived speedup values with the calculated
-speedup values produced by the solution.
-\item Third method is to get code from preveious assignments and run it through
-the program. The output of the program will be judged. The quality and usefulness of
-the graphs produced will be evaluated.
-\item The final method that will be used to evaluate the solution will be to do
-a user study of the usefulness of the produced visualizations in comparison to current
-parallelizable code visualization tools.
+\item Use simple parallelization problems that the fraction of parallelizable
+code can easily be calculated for. These fractions will then be used to compare
+with the solution’s output.
+\item Evaluate the correctness of the solution by running simple problems on a
+multicore machine both serially and after being parallelized to compare the
+actual speedup with the calculated values.
+\item Get code from preveious assignments and run it through the program. Output
+of the program will be judged. The quality and usefulness of the graphs produced
+will be evaluated.
+\item Evaluate the solution by carrying out a user study of the usefulness of
+the produced visualizations in comparison to current parallelizable code
+visualization tools.
 \end{description}
  
 \bibliographystyle{apacite}

@@ -93,19 +93,9 @@ problem proposed by this article is very much a non-trivial one but rather, a
 very complex one very many variables
 
 \section{Design}
-We will start design on the project in an agile manner. The plan is to churn out
-features in an incremental fashion while testing them before moving on to the
-next. The grand plan is to create a program that will be inputed a directory
-full of Java code. The output will be an analysis of how much of the code in
-there can be parallelised and what will be the resulting speedup for each piece
-of code.
+The creation of this tool will be based around an agile development process where features will be developed and tested incremental fashion. This will simplify the creation of a complicated tool into a set of relatively simple features. With such a complex tool and a relatively short timespan, an agile process allows us to change the scope of the project very quickly and still have a fully funcitonal set of capabilities.
 
-The program will calculate the total atomic lines of code. This metric will give
-a good superficial count of how many atomic operations occur in a given piece of
-code. The assumptions is that atomic lines of code cannot be parallelised within.
-The second assumption is that all atomic lines of code that unit time to
-execute. The point of this exercise is to get a very rough idea of the best case
-scenario of how much time a certain piece of code will take to execute.
+The long term scope of the project is to create a tool that outputs a meaningful analysis the amount of parallelisable code and the resulting speedup given a java derectory as input. This will be achieved at first by obtaining a superficial count of how many atomic operations occur in a block of code. The assumptions is that atomic lines of code cannot be parallelised while most others can. This allows the developer to get a rough estimate of the speed up they can expect by parallelizing their code. As the project progresses we intend to include other analysies such as dependence analysis to imporve the accuracy of this estimate.
 
 \section{Evaluation}
 \begin{description}

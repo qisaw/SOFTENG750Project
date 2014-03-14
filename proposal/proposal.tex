@@ -1,6 +1,7 @@
 \documentclass[a4paper]{article}
 
 \usepackage{url}
+\usepackage{apacite}
 
 \begin{document}
 
@@ -62,7 +63,45 @@ processors graph
 \end{description}
 
 \section{Related Articles}
-Bla
+There are some tools in industry that try and do some automatic parallelisation
+of some loops based on dependency analysis. This has been done using both static
+analysis \cite{helixProject} and runtime analysis \cite{5470884}. However, these
+tools simply try to parallelise all the code that they can, without taking
+software metrics such as understandability and extensibility into account. This
+can result in difficult to maintain code, which costs the developer more in the
+long run.
+
+A programmer has information not available to the algorithm such as probable
+data sources/types so can make better judgements on the usefulness and method of
+parallelisation. This statement has been supported by the authors of automatic
+paralellization tools \cite{5470884}. Although some tools have some programmer
+input (reference), none allow true programmer interaction. Facilitating a more
+complete programmer interaction will be of importance in our tool.
+
+The ability to visualise source code in a pragmatic style has been an
+extensively researched problem. Large, complex systems have many sophisticated
+transactions with a variety of data flow paths. It is difficult to get a clear
+understanding of the system by simply analyzing code. Data visualisation tools
+aim to give the developer a clear, consise overview of the system while
+identifying important “hot spots”. Our project intends to complete this
+\cite{488299}
+
+In this publication \cite{pitfalls2011}, the authors talk about the many pitfalls of
+parallelisation. While granularity can talk about overhead of each thread, it is
+not enough to consider just that. Threads with optimal granularity but a large
+amounts of dependencies will also end up being slower than serial code. The
+author talk about non-negligible overheads with threads that a dependent. It is
+not sufficient to look at the lines of codes by itself suggesting that the
+problem proposed by this article is very much a non-trivial one but rather, a
+very complex one very many variables
+
+Many proposed approaches to parallelization use dynamic analysis of
+dependencies \cite{peterson1993} \cite{1207020} \cite{Rus05hybriddependence}.
+This delays parallelization until runtime, using dynamic dependence information.
+We propose an approach that statically analyses source code, leaving
+parallelization to the programmer who will be able to use their expertise and
+intimate knowledge of the execution paths of the program to improve performance
+while maintaining correctness.
 
 \section{Design}
 We will start design on the project in an agile manner. The plan is to churn out
@@ -82,8 +121,8 @@ scenario of how much time a certain piece of code will take to execute.
 \section{Evaluation}
 \begin{description}
 \item The first method will use simple parallelization
-problems that the fraction of parallelizable code can easily be calculated for. These fractions
-will then be used to compare with the solution’s output. 
+problems that the fraction of parallelizable code can easily be calculated for.
+These fractions will then be used to compare with the solution’s output. 
 \item Second method to evaluate the correctness of the solution will be to run
 the same simple problems on a multicore machine both serially and after being
 parallelized and to compare the perceived speedup values with the calculated
@@ -95,5 +134,7 @@ the graphs produced will be evaluated.
 a user study of the usefulness of the produced visualizations in comparison to current
 parallelizable code visualization tools.
 \end{description}
-
+ 
+\bibliographystyle{apacite}
+\bibliography{refs}
 \end{document}

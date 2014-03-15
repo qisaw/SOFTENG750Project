@@ -5,31 +5,31 @@
 
 \begin{document}
 
-\title{Parallelisation Potential of Existing Serial Code}
+\title{Parallelization Potential of Existing Serial Code}
 \author{Mikhail D'Souza, Wasiq Kashkari, Sara Metz}
 % \date{12/03/2014}
 \maketitle
 
-\abstract{Now that multi-core mobile phones are becoming the norm, there is
+\abstract{Now that multi-core mobile phones are becoming commonplace, there is
 more emphasis on multi-core aware programming. This article proposes creating a
 tool that allows a developer to see how much of his/her code can be
-parallelised. This presents many challenges such as being able to visualize the
-benefits of parallelisation meaningfully and finding and using good metrics to
-gauge how much of the code can be parallelised. This project will attempt to
-analyse parallelisability at a superficial level and pave the way for more
+parallelized. This presents many challenges such as being able to visualize the
+benefits of parallelization meaningfully and finding and using good metrics to
+gauge how much of the code can be parallelized. This project will attempt to
+analyse parallelizability at a superficial level and pave the way for more
 advanced heuristics to come.}
 
 \section{Research Question}
 \begin{description}
 \item Is it feasible to predict the amount of code that can be parallelized?
-\item How do we get a visual representation of the benfits of parallelizing a
+\item How do we get a visual representation of the benefits of parallelizing a
 piece of code?
 \end{description}
 
 \section{Motivation}
-In terms of frequency, processors are beginning to peek at their physical
+In terms of frequency, processors are beginning to peak at their physical
 limits. The development and widespread public use of devices with
-multiple cores is increasing rapidly. Whilst these multi-core processors are
+multiple cores is rapidly increasing. Whilst these multi-core processors are
 capable of running multiple tasks asynchronously, the majority of code in the
 industry is not designed to efficiently capitalize on this capability
 (citation?). These physically superior devices are inefficiently used.
@@ -39,43 +39,43 @@ Sequential code is being adjusted for multi-threaded environments. This is
 complicated and time consuming, especially if a developer lacks prior knowledge
 of the workings of multiprocessing. As a result, developing for multi-threaded
 environments can become difficult. Developers are then faced with an unclear
-view of the cost vs benefits of parallelising a block of code.
+view of the cost vs benefits of parallelizing a block of code.
 
 Our research question aims to give developers a tool to quickly and intuitively
-visualise the benefits of parallelising a block of code. The point of this
-exercise is not to find an accurate description of how much can be parallelised
+visualise the benefits of parallelizing a block of code. The point of this
+exercise is not to find an accurate description of how much can be parallelized
 but rather to find the methods within a package that could benefit the most
-from parallelisation. Methods with the most promise of speed up from parallelisation
-can be worked upon first while method with very little speedup can be neglected.
+from parallelization. Methods with the most promise of speedup from parallelization
+could be improved upon first while methods with very little speedup could be neglected.
 
 \section{Requirements}
 \begin{description}
-\item The program must use an efficient, algorithm to analyse code blocks
+\item The program must use an efficient algorithm to analyse code blocks
 and determine whether or not that block of code is parallelizable.
-\item The program must take dependencies into account to some level
+\item The program must take dependencies into account at some level
 \item Give the user a quick and easy way to obtain a useful visualisation
 of the possible percentage speedup of a block of code.
 \item Meaningfully break down the code into fractions that can and cannot
-be parallelised
+be parallelized
 \end{description}
 
 \section{Related Articles}
-There are some tools in industry that try and do some automatic parallelisation
-of some loops based on dependency analysis. This has been done using both static
+There are tools in industry that try to do some automatic parallelization
+of selected loops based on dependency analysis. This has been done using both static
 analysis \cite{helixProject} and runtime dynamic analysis \cite{peterson1993}
 \cite{1207020} \cite{Rus05hybriddependence}. However, these tools simply try to
-parallelise all the code that they can, without taking software metrics such as
+parallelize all the code that they can, without taking software metrics such as
 understandability and extensibility into account. This can result in difficult
 to maintain code, which costs the developer more in the long run.
 
-Furthermore, a programmer has knowledge about their program the algorithm cannot
+Furthermore, a programmer has knowledge about their program that the algorithm cannot
 obtain, such as data composition and likely flow paths. Armed with such
-knowledge, programmers have the ability to make better judgement on the
-usefulness and most appropriate method of parallelisation. This statement is
-echoed by other research that states that automatic paralellisation does not do
+knowledge, programmers have the ability to make better judgments on the
+usefulness and most appropriate method of parallelization. This statement is
+echoed by other research that states that automatic parallelization does not do
 a good job in many situations \cite{5470884}. Hence, we propose an approach that
 statically analyses source code, giving the programmer ideas of where
-parallelisation could be beinifical. But ultimately, leaving parallelization to
+parallelization could be beneficial. But ultimately, leaving parallelization to
 the programmer who can draw on their personal knowledge of the program.
 
 \section{Design}
@@ -84,14 +84,14 @@ where features will be developed and tested in an incremental fashion. This
 will simplify the creation of a complicated tool into a set of relatively simple
 features. With such a complex tool and a relatively short timespan, an agile
 process allows us to change the scope of the project very quickly and still have
-a fully funcitonal set of capabilities.
+a fully functional set of capabilities.
 
 The long term scope of the project is to create a tool that outputs a meaningful
-analysis the amount of parallelisable code and the resulting speedup given a
-java derectory as input. This will be achieved at first by obtaining a
+analysis the amount of parallelizable code and the resulting speedup given a
+java directory as input. This will be achieved at first by obtaining a
 superficial count of how many atomic operations occur in a block of code. The
-assumptions is that atomic lines of code cannot be parallelised internally while
-most others can. This allows the developer to get a rough estimate of the speed up
+assumptions is that atomic lines of code cannot be parallelized internally while
+most others can. This allows the developer to get a rough estimate of the speedup
 they can expect by parallelizing their code. As the project progresses we intend
 to include other methods such as dependence analysis to improve the accuracy of
 this estimate.
@@ -102,9 +102,9 @@ this estimate.
 code can easily be calculated for. These fractions will then be used to compare
 with the solution’s output.
 \item Evaluate the correctness of the solution by running simple problems on a
-multicore machine both serially and after being parallelized to compare the
+multi-core machine both serially and after being parallelized to compare the
 actual speedup with the calculated values.
-\item Get code from preveious assignments and run it through the program. Output
+\item Get code from previous assignments and run it through the program. Output
 of the program will be judged. The quality and usefulness of the graphs produced
 will be evaluated.
 \item Evaluate the solution by carrying out a user study of the usefulness of
@@ -112,6 +112,25 @@ the produced visualizations in comparison to current parallelizable code
 visualization tools.
 \end{description}
  
+\section{Project Plan}
+\begin{description}
+\item \textbf{Milestone 1} - 11/04/2014 \\*
+Source code parsing and command line input handling complete\\*
+Unit tests written \\*
+Initial metrics designed\\*
+Visualization design complete
+\item \textbf{Milestone 2} - 25/05/2014\\*
+Parallelization analysis using initial metrics implemented\\*
+Design for improvement of metrics completed\\*
+Some initial visualization output
+\item \textbf{Milestone 3}  - 16/05/2014\\*
+Implemented improved metrics for parallelization detection \\*
+Visualization output complete
+\item \textbf{Milestone 3} - 20/05/2014\\*
+User test completed\\*
+All tests pass\\*
+\end{description}
+
 \bibliographystyle{apacite}
 \bibliography{refs}
 \end{document}

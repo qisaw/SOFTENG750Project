@@ -42,10 +42,10 @@ of the workings of multiprocessing. As a result, developing for multi-threaded
 environments can become difficult. Developers are then faced with an unclear
 view of the cost vs benefits of parallelizing a block of code.
 
-Our research question aims to give developers a tool to quickly and intuitively
-visualise the benefits of parallelizing a block of code. The point of this
+Our research aims to give developers a tool to quickly and intuitively
+visualise the benefits of parallelizing a selected block of code. The point of this
 exercise is not to find an accurate description of how much can be parallelized
-but rather to find the methods within a package that could benefit the most
+but rather to find the methods within the selected section of code that could benefit the most
 from parallelization. Methods with the most promise of speedup from parallelization
 could be improved upon first while methods with very little speedup could be neglected.
 
@@ -88,8 +88,7 @@ process allows us to change the scope of the project very quickly and still have
 a fully functional set of capabilities.
 
 The long term scope of the project is to create a tool that outputs a meaningful
-analysis the amount of parallelizable code and the resulting speedup given a
-java directory as input. This will be achieved at first by obtaining a
+analysis of the amount of parallelizable code and the resulting speedup for a section of code selected by the user. This will be achieved at first by obtaining a
 superficial count of how many atomic operations occur in a block of code. The
 assumptions is that atomic lines of code cannot be parallelized internally while
 most others can. This allows the developer to get a rough estimate of the speedup
@@ -108,8 +107,7 @@ with the solution’s output.
 \item Evaluate the correctness of the solution by running simple problems on a
 multi-core machine both serially and after being parallelized to compare the
 actual speedup with the calculated values.
-\item Get code from previous assignments and run it through the program. Output
-of the program will be judged. The quality and usefulness of the graphs produced
+\item Run code from previous assignments through the program. The quality and usefulness of the graphs produced
 will be evaluated.
 \item Evaluate the solution by carrying out a user study of the usefulness of
 the produced visualizations in comparison to current parallelizable code

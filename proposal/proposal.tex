@@ -16,8 +16,9 @@ tool that allows a developer to see how much of his/her code can be
 parallelized. This presents many challenges such as being able to visualize the
 benefits of parallelization meaningfully and finding and using good metrics to
 gauge how much of the code can be parallelized. This project will attempt to
-analyse parallelizability at a superficial level and pave the way for more
-advanced heuristics to come.}
+analyse parallelizability at a superficial level and output to the user,
+graphs of the speed-up benefits of different methods. This project will be
+based on PDStore.}
 
 \section{Research Question}
 \begin{description}
@@ -95,6 +96,9 @@ most others can. This allows the developer to get a rough estimate of the speedu
 they can expect by parallelizing their code. As the project progresses we intend
 to include other methods such as dependence analysis to improve the accuracy of
 this estimate.
+
+The tool will only work on a subset of the java language to reduce complexity
+and will be based on the PDStore tool.
 
 \section{Evaluation}
 \begin{description}

@@ -12,8 +12,8 @@
 
 \abstract{Now that multi-core mobile phones are becoming commonplace, there is
 more emphasis on multi-core aware programming. This article proposes creating a
-tool that allows a developer to see how much of his/her code can be
-parallelized. This presents many challenges such as being able to visualize the
+tool that allows a developer to see how much of his/her code will benefit from
+parallelization. This presents many challenges such as being able to visualize the
 benefits of parallelization meaningfully and finding and using good metrics to
 gauge how much of the code can be parallelized. With the help of PDStore, this project will attempt to 
 analyse parallelizability at a superficial level and output to the user,
@@ -32,7 +32,7 @@ limits. The development and widespread public use of devices with
 multiple cores is rapidly increasing. Whilst these multi-core processors are
 capable of running multiple tasks asynchronously, the majority of code in the
 industry is not designed to efficiently capitalize on this capability. These
-physically superior devices are inefficiently used.
+physically superior devices are being used inefficiently.
 
 Developers are beginning to adapt to the changing hardware landscape.
 Sequential code is being adjusted for multi-threaded environments. This is
@@ -42,7 +42,7 @@ environments can become difficult. Developers are then faced with an unclear
 view of the cost vs benefits of parallelizing a block of code.
 
 Our research aims to give developers a tool to quickly and intuitively
-visualise the benefits of parallelizing a selected block of code. The point of this
+visualize the benefits of parallelizing a selected block of code. The point of this
 exercise is not to find an accurate description of how much can be parallelized
 but rather to find the methods within the selected section of code that could benefit the most
 from parallelization. Methods with the most promise of speedup from parallelization
@@ -53,7 +53,7 @@ could be improved upon first while methods with very little speedup could be neg
 \item The program must use an efficient algorithm to analyse code blocks
 and determine whether or not that block of code is parallelizable.
 \item The program must take dependencies into account at some level
-\item Give the user a quick and easy way to obtain a useful visualisation
+\item Give the user a quick and easy way to obtain a useful visualization
 of the possible percentage speedup of a block of code.
 \item Meaningfully break down the code into fractions that can and cannot
 be parallelized
@@ -82,8 +82,7 @@ the programmer who can draw on their personal knowledge of the program.
 The creation of this tool will be based around an agile development process
 where features will be developed and tested in an incremental fashion. This
 will simplify the creation of a complicated tool into a set of relatively simple
-features. With such a complex tool and a relatively short timespan, we shall use and agile
-process that allows us to create a simple tool that focuses on a subset of features in the Java language. However, if time permits, we may add more complex algorithms and checks.
+features. With such a complex tool and a relatively short timespan, we shall create a simple tool that focuses on a subset of features in the Java language. However, if time permits, we may add more complex algorithms and checks.
 
 The long term scope of the project is to create a tool that outputs a meaningful analysis of the amount of parallelizable code and the resulting speedup for a section of code selected by the user. This will be achieved at first by importing the code into PDStore, parsing through the abstract syntax trees it creates and obtaining a
 superficial count of how many atomic operations occur in a block of code. The
@@ -97,7 +96,7 @@ this estimate.
 \begin{description}
 \item Use simple parallelization problems that the fraction of parallelizable
 code can easily be calculated for. These fractions will then be used to compare
-with the solution’s output.
+with the output of our program.
 \item Evaluate the correctness of the solution by running simple problems on a
 multi-core machine both serially and after being parallelized to compare the
 actual speedup with the calculated values.

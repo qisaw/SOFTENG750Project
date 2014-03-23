@@ -15,10 +15,9 @@ more emphasis on multi-core aware programming. This article proposes creating a
 tool that allows a developer to see how much of his/her code can be
 parallelized. This presents many challenges such as being able to visualize the
 benefits of parallelization meaningfully and finding and using good metrics to
-gauge how much of the code can be parallelized. This project will attempt to
+gauge how much of the code can be parallelized. With the help of PDStore, this project will attempt to 
 analyse parallelizability at a superficial level and output to the user,
-graphs of the speed-up benefits of different methods. This project will be
-based on PDStore.}
+graphs of the speed-up benefits of different methods.}
 
 \section{Research Question}
 \begin{description}
@@ -83,21 +82,16 @@ the programmer who can draw on their personal knowledge of the program.
 The creation of this tool will be based around an agile development process
 where features will be developed and tested in an incremental fashion. This
 will simplify the creation of a complicated tool into a set of relatively simple
-features. With such a complex tool and a relatively short timespan, an agile
-process allows us to change the scope of the project very quickly and still have
-a fully functional set of capabilities.
+features. With such a complex tool and a relatively short timespan, we shall use and agile
+process that allows us to create a simple tool that focuses on a subset of features in the Java language. However, if time permits, we may add more complex algorithms and checks.
 
-The long term scope of the project is to create a tool that outputs a meaningful
-analysis of the amount of parallelizable code and the resulting speedup for a section of code selected by the user. This will be achieved at first by obtaining a
+The long term scope of the project is to create a tool that outputs a meaningful analysis of the amount of parallelizable code and the resulting speedup for a section of code selected by the user. This will be achieved at first by importing the code into PDStore, parsing through the abstract syntax trees it creates and obtaining a
 superficial count of how many atomic operations occur in a block of code. The
-assumptions is that atomic lines of code cannot be parallelized internally while
+assumption is that atomic lines of code cannot be parallelized internally while
 most others can. This allows the developer to get a rough estimate of the speedup
 they can expect by parallelizing their code. As the project progresses we intend
 to include other methods such as dependence analysis to improve the accuracy of
 this estimate.
-
-The tool will only work on a subset of the java language to reduce complexity
-and will be based on the PDStore tool.
 
 \section{Evaluation}
 \begin{description}
